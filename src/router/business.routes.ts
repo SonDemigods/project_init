@@ -24,6 +24,6 @@ export default [{
         menuHide: false
       },
       component: () => import(/* webpackChunkName: "PageDemo" */ '@/views/Business/PageDemo/index.vue')
-    },
+    }
   ]
 }]

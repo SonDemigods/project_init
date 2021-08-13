@@ -3,7 +3,7 @@ export default {
   layout: {
     // 页头
     header: {
-      show: true,
+      show: true
 
     },
     // 页脚

@@ -38,7 +38,7 @@ export default {
     ]
 
     // 初始化菜单数组
-    let menuList = ref([])
+    const menuList = ref([])
 
     /**
      * @functionName menuInit
@@ -50,11 +50,11 @@ export default {
      * @version V1.0.0
      */
     const menuInit = (routes) => {
-      let arr = []
+      const arr = []
       routes.map(item => {
         const { meta } = item
         if (meta && !meta.menuHide) {
-          let obj = {
+          const obj = {
             title: meta.title,
             icon: meta.icon,
             path: item.path
