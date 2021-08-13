@@ -1,8 +1,7 @@
 'use strict'
 
-import { app, protocol, BrowserWindow } from 'electron'
+import { app, protocol, BrowserWindow, Menu } from 'electron'
 import { createProtocol } from 'vue-cli-plugin-electron-builder/lib'
-import installExtension, { VUEJS3_DEVTOOLS } from 'electron-devtools-installer'
 // import installExtension, { VUEJS3_DEVTOOLS } from 'electron-devtools-installer'
 const isDevelopment = process.env.NODE_ENV !== 'production'
 
@@ -12,10 +11,16 @@ protocol.registerSchemesAsPrivileged([
 ])
 
 async function createWindow() {
-  // Create the browser window.
+  // 创建浏览器窗口
   const win = new BrowserWindow({
+    minWidth: 800,
+    minHeight: 600,
     width: 1366,
     height: 768,
+    // 自动隐藏菜单栏
+    // autoHideMenuBar: true,
+    // 带完整边框的窗口
+    // frame: false,
     webPreferences: {
       
       // Use pluginOptions.nodeIntegration, leave this alone
@@ -25,6 +30,9 @@ async function createWindow() {
       contextIsolation: !process.env.ELECTRON_NODE_INTEGRATION
     }
   })
+
+  // 隐藏菜单栏
+  Menu.setApplicationMenu(null)
 
   if (process.env.WEBPACK_DEV_SERVER_URL) {
     // Load the url of the dev server if in development mode
