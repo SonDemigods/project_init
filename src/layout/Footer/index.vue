@@ -1,5 +1,7 @@
 <template>
-  <div>Footer</div>
+  <div>
+    demigods ©2021 Created by demigods
+  </div>
 </template>
 
 <script>
