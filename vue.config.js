@@ -1,13 +1,11 @@
 const path = require('path')
 
-// 配置文件
-// const config = require('./src/config')
-import config from './src/config'
-
 // 根路径
 const resolve = dir => {
   return path.join(__dirname, dir)
 }
+
+const TITLE = '前端项目创建工具'
 
 // 项目部署基础
 // 默认情况下，我们假设你的应用将被部署在域的根目录下,
@@ -16,30 +14,44 @@ const resolve = dir => {
 // 如果您的应用程序部署在子路径中，则需要在这指定子路径
 // 例如：https://www.foobar.com/my-app/
 // 需要将它改为'/my-app/'
-const publicPath = process.env.NODE_ENV === 'production'
-  ? './'
-  : config.publicPath
+// const publicPath = './'
 
 module.exports = {
   // 项目基础路径
-  publicPath,
+  // publicPath,
   // 如果你不需要使用eslint，把lintOnSave设为false即可
   lintOnSave: true,
   chainWebpack: config => {
-    // 路径别名。key,value自行定义，比如.set('@@', resolve('src/components'))
+    // 设置标题名称
+    config
+      .plugin('html')
+      .tap(args => {
+        args[0].title= TITLE
+        return args
+      })
+
+    // 设置路径别名。key,value自行定义，比如.set('@@', resolve('src/components'))
     config.resolve.alias
       .set('@', resolve('src'))
       .set('_c', resolve('src/components'))
   },
+  // 插件配置
   pluginOptions: {
+    // electron打包配置
     electronBuilder: {
       // 在渲染进程中使用node
       nodeIntegration: true,
+      // 打包配置
       builderOptions: {
+        // 安装文件名称
+        productName: TITLE,
         win: {
           icon: './public/app.ico'
         },
         mac: {
+          icon: './public/app.icns'
+        },
+        linux: {
           icon: './public/app.png'
         }
       }
@@ -47,7 +59,7 @@ module.exports = {
   },
   // 打包时生成用于调试的.map文件
   productionSourceMap: true,
-  // 服务配置
+  // 开发代理服务配置
   devServer: {
     // 端口号
     port: 8888,
