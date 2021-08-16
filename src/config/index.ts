@@ -1,18 +1,9 @@
-export default {
-  // 布局配置
-  layout: {
-    // 页头
-    header: {
-      show: true
+import url from './url.config'
+import layout from './layout.config'
 
-    },
-    // 页脚
-    footer: {
-      show: true
-    },
-    // 侧边栏
-    sidebar: {
-      show: true
-    }
-  }
+export default {
+  // 路径配置
+  ...url,
+  // 布局配置
+  layout,
 }
