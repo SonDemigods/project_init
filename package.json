@@ -1,5 +1,9 @@
 {
   "name": "project-init",
+  "author": {
+    "name": "demigods",
+    "email": "a13752365641@126.com"
+  },
   "version": "0.0.1",
   "private": true,
   "scripts": {
