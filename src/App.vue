@@ -11,5 +11,9 @@ export default defineComponent({
 })
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
+html, body {
+  padding: 0;
+  margin: 0;
+}
 </style>
