@@ -1,10 +1,13 @@
 <template>
-  <el-menu default-active="2"
+  <el-menu default-active="Home"
            :router="true"
+           :background-color="theme.navBgColor"
+           :text-color="theme.navTextColor"
+           :active-text-color="theme.navActiveTextColor"
            class="el-menu-vertical-demo"
            @open="handleOpen"
            @close="handleClose">
-    
+
     <menu-item :list="menuList" />
   </el-menu>
 </template>
@@ -29,7 +32,10 @@ export default {
   setup () {
 
     // 解构上下文中的实例
-    const {ctx} = getCurrentInstance()
+    const { ctx } = getCurrentInstance()
+
+    // 获取主题配置
+    const { $config: {theme} } = ctx
 
     // 合并路由配置
     const routes = [
@@ -75,6 +81,7 @@ export default {
     })
 
     return {
+      theme,
       menuList,
       menuInit
     }
