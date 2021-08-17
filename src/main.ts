@@ -6,6 +6,9 @@ import ElementPlus from 'element-plus'
 // 导入ui组件的样式文件
 import 'element-plus/lib/theme-chalk/index.css'
 
+// 导入配置
+import config from './config'
+
 // 导入lodash
 import _ from 'lodash'
 
@@ -23,6 +26,9 @@ const app = createApp(App)
 
 
 // globalProperties 为应用内全局 property，代替 Vue 2.x Vue.prototype
+
+// 绑定配置
+app.config.globalProperties.$config = config
 
 // 绑定lodash
 app.config.globalProperties.$_ = _
