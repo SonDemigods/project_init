@@ -1,7 +1,7 @@
 <template>
   <div>
-    <div v-for="(item, index) in list"
-              :key="index">
+    <div v-for="(item) in list"
+              :key="item.path">
       <template v-if="item.children">
         <el-submenu>
           <template #title>
