@@ -28,7 +28,7 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
 export default {
   name: 'menuItem',
   props: {
@@ -39,9 +39,7 @@ export default {
       }
     }
   },
-  setup () {
-
-  }
+  setup () {}
 }
 </script>
 
