@@ -4,6 +4,7 @@
            :background-color="theme.navBgColor"
            :text-color="theme.navTextColor"
            :active-text-color="theme.navActiveTextColor"
+           :collapse="collapse"
            class="el-menu-vertical-demo"
            @open="handleOpen"
            @close="handleClose">
@@ -12,40 +13,43 @@
   </el-menu>
 </template>
 
-<script>
-import {
-  getCurrentInstance,
-  ref,
-  onMounted
-} from 'vue'
+<script lang="ts">
+import { defineComponent } from 'vue'
 
 import commonRoutes from '@/router/common.routes'
 import businessRoutes from '@/router/business.routes'
 
+import {
+  IF_routerItem
+} from './interface'
+
 import menuItem from './menuItem.vue'
-export default {
+export default defineComponent({
   name: 'Sidebar',
   components: {
     menuItem
   },
-  props: {},
-  setup () {
-
-    // 解构上下文中的实例
-    const { ctx } = getCurrentInstance()
-
-    // 获取主题配置
-    const { $config: {theme} } = ctx
-
-    // 合并路由配置
-    const routes = [
-      ...commonRoutes,
-      ...businessRoutes
-    ]
-
-    // 初始化菜单数组
-    const menuList = ref([])
-
+  props: {
+    collapse: {
+      type: Boolean,
+      default: false
+    }
+  },
+  computed: {
+    theme(): Object {
+      const {
+        // @ts-ignore
+        $config: { theme }
+      } = this
+      return theme
+    },
+    menuList(): Array<Object> {
+      // 合并路由配置
+      const routes = [...commonRoutes, ...businessRoutes]
+      return this.menuInit(routes)
+    }
+  },
+  methods: {
     /**
      * @functionName menuInit
      * @param {Array} routes 待处理的路由数组
@@ -55,38 +59,43 @@ export default {
      * @date 2021-04-20 16:38:23
      * @version V1.0.0
      */
-    const menuInit = (routes) => {
-      const arr = []
-      routes.map(item => {
+    menuInit(routes: Array<any>):Array<any> {
+      const arr: Array<any> = []
+      routes.map((item) => {
         const { meta } = item
         if (meta && !meta.menuHide) {
-          const obj = {
+          const obj: IF_routerItem = {
             title: meta.title,
             icon: meta.icon,
             path: item.path
           }
 
           // 对含有子项的路由进行递归处理
-          if (!ctx.$_.isEmpty(item.children)) {
-            obj.children = menuInit(item.children)
+          // @ts-ignore
+          if (!this.$_.isEmpty(item.children)) {
+            obj.children = this.menuInit(item.children)
           }
           arr.push(obj)
         }
       })
       return arr
     }
-
-    onMounted(() => {
-      menuList.value = menuInit(routes)
-    })
-
-    return {
-      theme,
-      menuList,
-      menuInit
+  },
+  setup() {}
+})
+</script>
+<style lang="scss">
+.el-menu--collapse {
+  .el-submenu {
+    .el-submenu__title {
+      span {
+        height: 0;
+        width: 0;
+        overflow: hidden;
+        visibility: hidden;
+        display: inline-block;
+      }
     }
   }
 }
-</script>
-<style lang="scss" scoped>
 </style>
