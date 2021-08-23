@@ -26,7 +26,7 @@ module.exports = {
     config
       .plugin('html')
       .tap(args => {
-        args[0].title= TITLE
+        args[0].title = TITLE
         return args
       })
 
@@ -53,6 +53,16 @@ module.exports = {
         },
         linux: {
           icon: './public/app.png'
+        },
+        nsis: {
+          // 是否一键安装，默认为true
+          oneClick: false,
+          // 安装语言，2052对应中文            
+          language: '2052',
+          // 为当前系统的所有用户安装该应用程序           
+          perMachine: true,
+          // 允许用户选择安装目录
+          allowToChangeInstallationDirectory: true
         }
       }
     }
