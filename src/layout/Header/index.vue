@@ -7,13 +7,16 @@
       <expand v-if="collapse"
               class="collapse-btn" />
     </div>
+    <div>
 
+    </div>
   </div>
 </template>
 
 <script lang="ts">
 import {
-  defineComponent
+  defineComponent,
+  toRefs
 } from 'vue'
 
 import { Fold, Expand } from '@element-plus/icons'
@@ -30,13 +33,27 @@ export default defineComponent({
       default: false
     }
   },
-  methods: {
-    changeCollapse() {
-      console.log(this.collapse)
-      this.$emit('on-change-collapse', !this.collapse)
+  setup (props, context) {
+
+    // 获取当前侧边栏状态
+    const { collapse } = toRefs(props)
+
+    /**
+     * @functionName changeCollapse
+     * @description 根据当前侧边栏状态，收起/展开侧边栏
+     * @author 张航
+     * @date 2021-08-24 09:54:14
+     * @version V1.0.0
+     */
+    const changeCollapse = ():void => {
+      context.emit('on-change-collapse', !collapse.value)
     }
-  },
-  setup () {}
+
+    return {
+      changeCollapse
+    }
+    
+  }
 })
 </script>
 <style lang="scss" scoped>
