@@ -41,7 +41,10 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue'
+import { 
+  defineComponent,
+  ref
+} from 'vue'
 
 // 导入页头组件
 import Header from '@/layout/Header/index.vue'
@@ -67,13 +70,11 @@ export default defineComponent({
     Main
   },
   props: {},
-  data() {
-    return {
-      // 左侧菜单的收起状态
-      isCollapse: false
-    }
-  },
-  methods: {
+  setup() {
+
+    // 左侧菜单的收起状态
+    const isCollapse = ref(false)
+
     /**
      * @functionName changeCollapse
      * @param {Boolean} type 要变更的状态
@@ -82,12 +83,13 @@ export default defineComponent({
      * @date 2021-08-19 16:26:22
      * @version V1.0.0
      */
-    changeCollapse(type: boolean) {
-      this.isCollapse = type
+    const changeCollapse = (type: boolean) => {
+      isCollapse.value = type
     }
-  },
-  setup() {
+
     return {
+      isCollapse,
+      changeCollapse,
       logo
     }
   }
