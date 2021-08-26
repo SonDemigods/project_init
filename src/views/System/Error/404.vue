@@ -3,13 +3,16 @@
 </template>
 
 <script>
-export default {
+// 导入vue功能
+import {
+  defineComponent
+} from 'vue'
+
+export default defineComponent({
   name: '404',
   props: {},
-  setup () {
-
-  }
-}
+  setup () {}
+})
 </script>
 <style lang="scss" scoped>
 </style>

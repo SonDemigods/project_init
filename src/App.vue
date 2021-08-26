@@ -3,11 +3,13 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue'
+// 导入vue功能
+import {
+  defineComponent
+} from 'vue'
 
 export default defineComponent({
-  name: 'App',
-  components: {}
+  name: 'App'
 })
 </script>
 
