@@ -1,5 +1,5 @@
 <template>
-  <el-menu default-active="Home"
+  <el-menu default-active="/Home"
            :router="true"
            :background-color="theme.navBgColor"
            :text-color="theme.navTextColor"
@@ -14,10 +14,17 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue'
+import {
+  defineComponent,
+  computed
+} from 'vue'
+
+import _ from  'lodash'
 
 import commonRoutes from '@/router/common.routes'
 import businessRoutes from '@/router/business.routes'
+
+import themeConfig  from '@/config/theme.config'
 
 import {
   IF_routerItem
@@ -35,21 +42,13 @@ export default defineComponent({
       default: false
     }
   },
-  computed: {
-    theme(): Object {
-      const {
-        // @ts-ignore
-        $config: { theme }
-      } = this
-      return theme
-    },
-    menuList(): Array<Object> {
-      // 合并路由配置
-      const routes = [...commonRoutes, ...businessRoutes]
-      return this.menuInit(routes)
-    }
-  },
-  methods: {
+  setup() {
+
+    // 主题配置
+    const theme = computed((): Object => {
+      return themeConfig
+    })
+
     /**
      * @functionName menuInit
      * @param {Array} routes 待处理的路由数组
@@ -59,7 +58,7 @@ export default defineComponent({
      * @date 2021-04-20 16:38:23
      * @version V1.0.0
      */
-    menuInit(routes: Array<any>):Array<any> {
+    const menuInit = (routes: Array<any>):Array<any> => {
       const arr: Array<any> = []
       routes.map((item) => {
         const { meta } = item
@@ -71,17 +70,29 @@ export default defineComponent({
           }
 
           // 对含有子项的路由进行递归处理
-          // @ts-ignore
-          if (!this.$_.isEmpty(item.children)) {
-            obj.children = this.menuInit(item.children)
+          if (!_.isEmpty(item.children)) {
+            obj.children = menuInit(item.children)
           }
           arr.push(obj)
         }
       })
       return arr
     }
-  },
-  setup() {}
+
+    // 根据路由生成左侧菜单
+    const menuList = computed((): Array<Object> => {
+      // 合并路由配置
+      const routes = [...commonRoutes, ...businessRoutes]
+      return menuInit(routes)
+    })
+
+    return {
+      theme,
+      menuInit,
+      menuList
+    }
+
+  }
 })
 </script>
 <style lang="scss">
