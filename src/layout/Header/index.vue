@@ -14,12 +14,17 @@
 </template>
 
 <script lang="ts">
+// 导入vue功能
 import {
   defineComponent,
   toRefs
 } from 'vue'
 
-import { Fold, Expand } from '@element-plus/icons'
+// 导入图标
+import {
+  Fold,
+  Expand
+} from '@element-plus/icons'
 
 export default defineComponent({
   name: 'Header',

@@ -14,23 +14,30 @@
 </template>
 
 <script lang="ts">
+// 导入vue功能
 import {
   defineComponent,
   computed
 } from 'vue'
 
+// 导入lodash工具包
 import _ from  'lodash'
 
+// 导入路由配置
 import commonRoutes from '@/router/common.routes'
 import businessRoutes from '@/router/business.routes'
 
+// 导入主题配置
 import themeConfig  from '@/config/theme.config'
 
+// 导入接口
 import {
   IF_routerItem
 } from './interface'
 
+// 导入菜单子组件
 import menuItem from './menuItem.vue'
+
 export default defineComponent({
   name: 'Sidebar',
   components: {

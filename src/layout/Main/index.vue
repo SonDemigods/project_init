@@ -5,14 +5,17 @@
 </template>
 
 <script>
-export default {
+// 导入vue功能
+import {
+  defineComponent
+} from 'vue'
+
+export default defineComponent({
   name: 'Main',
   components: {},
   props: {},
-  setup () {
-
-  }
-}
+  setup () {}
+})
 </script>
 <style lang="scss" scoped>
 </style>

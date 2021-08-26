@@ -29,7 +29,12 @@
 </template>
 
 <script lang="ts">
-export default {
+// 导入vue功能
+import {
+  defineComponent
+} from 'vue'
+
+export default defineComponent({
   name: 'menuItem',
   props: {
     list: {
@@ -40,7 +45,7 @@ export default {
     }
   },
   setup () {}
-}
+})
 </script>
 
 <style>
