@@ -2,7 +2,7 @@
   <div>Home</div>
 </template>
 
-<script>
+<script lang="ts">
 // 导入vue功能
 import {
   defineComponent
