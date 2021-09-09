@@ -7,23 +7,23 @@ export default [{
   },
   component: () => import(/* webpackChunkName: "Home" */ '@/views/System/Home/index.vue')
 }, {
-  path: '/Demo',
-  name: 'Demo',
+  path: '/InitType',
+  name: 'InitType',
   meta: {
-    title: '示例页面',
+    title: '创建项目',
     menuHide: false
   },
   component: () => import(/* webpackChunkName: "Main" */ '@/layout/Main/index.vue'),
   children: [
     {
-      path: '/PageDemo',
-      name: 'PageDemo',
+      path: '/InitPageByVue',
+      name: 'InitPageByVue',
       meta: {
-        title: '子页面',
+        title: 'Vue',
         icon: 's-grid',
         menuHide: false
       },
-      component: () => import(/* webpackChunkName: "PageDemo" */ '@/views/Business/PageDemo/index.vue')
+      component: () => import(/* webpackChunkName: "InitPageByVue" */ '@/views/Business/InitPageByVue/index.vue')
     }
   ]
 }]
