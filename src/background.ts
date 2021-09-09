@@ -22,12 +22,12 @@ async function createWindow() {
     // 带完整边框的窗口
     // frame: false,
     webPreferences: {
-      
-      // Use pluginOptions.nodeIntegration, leave this alone
-      // See nklayman.github.io/vue-cli-plugin-electron-builder/guide/security.html#node-integration for more info
-      nodeIntegration: (process.env
-          .ELECTRON_NODE_INTEGRATION as unknown) as boolean,
-      contextIsolation: !process.env.ELECTRON_NODE_INTEGRATION
+      // 在渲染进程中使用node
+      nodeIntegration: true,
+      // 在渲染进程中使用远程模块
+      enableRemoteModule: true,
+      // 是否开启上下文隔离
+      contextIsolation: false,
     }
   })
 
