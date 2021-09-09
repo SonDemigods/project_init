@@ -63,7 +63,7 @@ export default defineComponent({
 <style lang="scss" scoped>
 .error-bg {
   display: block;
-  width: 40%;
+  height: 80%;
   margin: 6% auto;
 }
 .error-btn-box {
