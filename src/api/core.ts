@@ -114,7 +114,7 @@ class HttpRequest implements Core {
    * @functionName request
    * @param {Object} options 请求配置
    * @return {Promise} 返回axios实例
-   * @description 方法描述
+   * @description 基础请求方法
    * @author 张航
    * @date 2021-04-26 17:25:55
    * @version V1.0.0

@@ -37,7 +37,7 @@ export default defineComponent({
 
     /**
      * @functionName exportProject
-     * @description 方法描述
+     * @description 导出项目事件
      * @author 张航
      * @date 2021-09-09 16:36:09
      * @version V1.0.0
