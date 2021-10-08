@@ -9,8 +9,10 @@
 // 导入vue功能
 import { defineComponent } from 'vue'
 
+// 导入electron工具
 import { showOpenDialog } from '@/tools/electron.tool'
 
+// 导入template工具
 import { writeFile } from '@/tools/template.tool'
 
 export default defineComponent({
