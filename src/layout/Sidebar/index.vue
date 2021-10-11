@@ -116,4 +116,7 @@ export default defineComponent({
     }
   }
 }
+.el-menu {
+  overflow: hidden;
+}
 </style>
