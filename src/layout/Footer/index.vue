@@ -1,6 +1,6 @@
 <template>
   <div>
-    demigods ©2021 Created by demigods
+    ProjectInit ©2021 Created by demigods
   </div>
 </template>
 
