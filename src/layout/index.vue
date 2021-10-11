@@ -24,7 +24,9 @@
 
       <!-- main 主显示区 START -->
       <el-main class="pi-main">
-        <Main />
+        <el-card shadow="hover" class="main-card">
+          <Main />
+        </el-card>
       </el-main>
       <!-- main 主显示区 END -->
 
@@ -124,6 +126,11 @@ export default defineComponent({
     height: calc(100vh - 100px);
     background: #f5f5f5;
     box-sizing: border-box;
+    padding: 10px;
+
+    .main-card {
+      height: calc(100vh - 122px);
+    }
   }
 
   &-footer {
