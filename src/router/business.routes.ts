@@ -24,6 +24,16 @@ export default [{
         menuHide: false
       },
       component: () => import(/* webpackChunkName: "InitPageByVue" */ '@/views/Business/InitPageByVue/index.vue')
+    },
+    {
+      path: '/InitPageByReact',
+      name: 'InitPageByReact',
+      meta: {
+        title: 'React',
+        icon: 's-grid',
+        menuHide: false
+      },
+      component: () => import(/* webpackChunkName: "InitPageByReact" */ '@/views/Business/InitPageByReact/index.vue')
     }
   ]
 }]
